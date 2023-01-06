@@ -1,18 +1,18 @@
 export function countryListTemplate({ flags, name }) {
-    return 
-    `<li class="country-list__item">
-        <img class="country-list__flag-img" src="${flags.svg}" alt="${name.official}">
+    return `<li class="country-list__item">
+        <img class="country-list__flag-img" src="${flags.svg}" alt="${name.official}" width = 100>
         <h2 class="country-list__name">${name.official}</h2>
     </li>`
 };
 
 export function countryCardTemplate({ flags, name, capital, population, languages }) {
-    return 
-        `<img class="country-info__flag-img" src="${flags.svg}" alt="${name.official}">
+    return `<div class="country-info__wrap">
+        <img class="country-info__flag-img" src="${flags.svg}" alt="${name.official}" width = 100>
         <h2 class="country-info__name">${name.official}</h2>
-        <p class="country-info__capital"><span>Capital: </span>${capital}</p>
-        <p class="country-info__population"><span>Population: </span>${population}</p>
-        <p class="country-info__languages"><span>Languages: </span>${Object.values(languages)}</p>`
+        </div>
+        <p class="country-info__capital"><span class="country-info__text">Capital: </span>${capital}</p>
+        <p class="country-info__population"><span class="country-info__text">Population: </span>${population}</p>
+        <p class="country-info__languages"><span class="country-info__text">Languages: </span>${Object.values(languages)}</p>`
 };
 
 
