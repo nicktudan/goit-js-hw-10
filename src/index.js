@@ -18,9 +18,10 @@ refs.inputSearchBox.addEventListener('input', debounce(onInputSearchBox, DEBOUNC
 
 function onInputSearchBox(e) {
     e.preventDefault();
+    cleanHTML();
     const searchCountry = refs.inputSearchBox.value.trim();
     if (searchCountry === '') {
-        cleanHTML();
+        // cleanHTML();
         changeBorderColor('blue');
         return;
     }
@@ -29,7 +30,7 @@ function onInputSearchBox(e) {
         .then(countries => {
             if (countries.length > 10) {
                 Notify.info('Too many matches found. Please enter a more specific name.');
-                cleanHTML();
+                // cleanHTML();
                 changeBorderColor('red');
                 return;
             }
@@ -37,19 +38,19 @@ function onInputSearchBox(e) {
             if (countries.length >= 2 && countries.length <= 10) {
                 const listMarkup = countries.map(country => countryListTemplate(country));
                 refs.countryList.innerHTML = listMarkup.join('');
-                refs.countryInfo.innerHTML = '';
+                // refs.countryInfo.innerHTML = '';
                 changeBorderColor('lightgreen');
             }
             
             if (countries.length === 1) {
                 const cardMarkup = countries.map(country => countryCardTemplate(country));
-                refs.countryList.innerHTML = '';
+                // refs.countryList.innerHTML = '';
                 refs.countryInfo.innerHTML = cardMarkup.join('');
             }
         })
         .catch(err => {
             Notify.failure('Oops, there is no country with that name');
-            cleanHTML();
+            // cleanHTML();
             changeBorderColor('red');
             return Error;
     })
